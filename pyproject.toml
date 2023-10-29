@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ai-devs"
+version = "0.1.0"
+description = ""
+authors = ["Dominik Jeziorski d.jeziorski@gmail.com"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+python-dotenv = "*"
+langchain = "*"
+openai = "*"
+tiktoken = "*"
+black = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
