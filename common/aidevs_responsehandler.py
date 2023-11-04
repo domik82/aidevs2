@@ -11,6 +11,8 @@ class ResponseTaskHandler(ResponseBaseHandler):
         self.cookie = self.response_json.get("cookie", None)
         self.blog = self.response_json.get("blog", None)
         self.input = self.response_json.get("input", None)
+        self.answer = self.response_json.get("answer", None)
+        self.question = self.response_json.get("question", None)
 
 
 class ResponseTokenHandler(ResponseBaseHandler):

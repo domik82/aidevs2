@@ -13,6 +13,7 @@ langchain = "*"
 openai = "*"
 tiktoken = "*"
 black = "*"
+icecream = "*"
 
 [build-system]
 requires = ["poetry-core"]

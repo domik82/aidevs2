@@ -14,11 +14,11 @@ from common.logger_setup import configure_logger
 
 class TaskHandler:
     def __init__(
-        self,
-        task_name: str = None,
-        base_url: str = AI_DEVS_SERVER,
-        user_api_key: str = AI_DEVS_USER_TOKEN,
-        logger=None,
+            self,
+            task_name: str = None,
+            base_url: str = AI_DEVS_SERVER,
+            user_api_key: str = AI_DEVS_USER_TOKEN,
+            logger=None,
     ):
         self.base_url: str = base_url
         self.user_api_key: str = user_api_key
@@ -26,6 +26,7 @@ class TaskHandler:
         self.task_name: str = task_name
         self.task_token: ResponseTokenHandler = None
         self.task: ResponseTaskHandler = None
+        self.ai_devs_bot: ResponseTaskHandler = None
         self.log = logger if logger is not None else configure_logger()
         self.log.info(f"Task Name: {self.task_name}")
 
@@ -90,3 +91,24 @@ class TaskHandler:
                 )
         else:
             raise RuntimeError(f"Task token doesn't exist")
+
+    def get_ai_devs_bot_answer(self, question: Any) -> ResponseTaskHandler:
+        if self.task_token != "":
+            self.log.info(f'task_token: {self.get_task_token_value()}')
+            question = {"question": question}
+            response = requests.post(
+                f"{self.base_url}/task/{self.get_task_token_value()}",
+                data=question,
+            )
+            if response.status_code == 200:
+                self.log.info(f"get_task_by_token response: {response.json()}")
+                self.ai_devs_bot = ResponseTaskHandler(response.json())
+                return self.ai_devs_bot.answer
+            else:
+                raise Exception(
+                    f"Failed to get task. Status code: {response.status_code}, body: {response.json()}"
+                )
+        else:
+            raise ValueError(f"Please provide token_id")
+
+
