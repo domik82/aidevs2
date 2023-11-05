@@ -13,6 +13,7 @@ class ResponseTaskHandler(ResponseBaseHandler):
         self.input = self.response_json.get("input", None)
         self.answer = self.response_json.get("answer", None)
         self.question = self.response_json.get("question", None)
+        self.hint = self.response_json.get("hint", None)
 
 
 class ResponseTokenHandler(ResponseBaseHandler):

@@ -1,0 +1,8 @@
+Fruits only, sort alphabetically as JSON list
+Extract fruits and sort alphabetically in JSON list: ["fruit1","fruit2"]
+
+
+Popraw dostarczony kod. Funkcja ma zwracać liczbę ciągu Fibonacciego. Kod jest napisany w PHP 8.1.
+W każdym błędnym przypadku zwracaj zero.
+Czas wykonania ma być krótszy niż 2 sekundy - w przypadku przekroczenia przerwij i zwróć 0.
+Ogranicz zużycie pamięci aby PHP nie umarł.

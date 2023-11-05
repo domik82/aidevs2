@@ -11,9 +11,11 @@ requests = "^2.31.0"
 python-dotenv = "*"
 langchain = "*"
 openai = "*"
+openai-whisper = "*"
 tiktoken = "*"
 black = "*"
 icecream = "*"
+
 
 [build-system]
 requires = ["poetry-core"]
