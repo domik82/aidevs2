@@ -1,0 +1,53 @@
+This was the most frustrating task for me till now.
+
+Task in Eng:
+Return 7 interesting facts about the city given by the user. Write them out as a list (one under the other). You must
+not use/list the word given by the user as well as its variation (GPT-3.5-turbo)
+
+
+In my case Warszawa word was always returned in the output what made task to fail on AiDevs.
+
+
+Samples of system prompts below.
+
+First one doesn't work! The name of the city will be in 95% of answers.
+But it was enough to delete part of the text. To make it passing more frequently, although it still tend to fail.
+
+In PL:
+
+SYSTEM:
+Zwróæ siedem ciekawostek na temat podanego przez u¿ytkownika s³owa. B¹dŸ zwiêz³y.
+Nie wolno podaæ Ci nazwy miasta w odpowiedzi.
+WA¯NE: Zast¹p podan¹ nazwê synonimem: miasto, miejsce.
+
+USER prompt: Warszawa
+
+Fixed:
+
+SYSTEM:
+Zwróæ siedem ciekawostek. B¹dŸ zwiêz³y.
+Nie wolno podaæ Ci nazwy miasta w odpowiedzi.
+WA¯NE: Zast¹p podan¹ nazwê synonimem: miasto, miejsce.
+
+------------------------------
+EN:
+Return seven interesting facts.
+Be concise.
+Answer in Polish.
+You must not give the name of the city in your answer.
+
+IMPORTANT: Replace the given name with a synonym: city, place
+
+------------------------------
+
+Conclusions from comments on the course
+- GPT-3.5-turbo handles complicated commands poorly
+- GPT-3.5-turbo likes positive commands (do X), and does poorly with negatives (under no circumstances do Y!).
+- some more complicated expressions/definitions work better on GPT-4, and GPT-3.5-turbo doesn't really know how to go about it.
+- GPT-3.5 needs examples and misses subtle clues (GPT-4 is handled much better)
+
+Konluzje:
+- GPT-3.5-turbo kiepsko radzi sobie ze skomplikowanymi poleceniami
+- GPT-3.5-turbo lubi pozytywne komendy (zrób X), a kiepsko radzi sobie z negacjami (pod ¿adnym pozorem nie rób Y!)
+- niektóre bardziej skomplikowane wyra¿enia/okreœlenia lepiej dzia³aj¹ na GPT-4, a GPT-3.5-turbo nie bardzo wie, jak siê do tego zabraæ.
+- GPT-3.5 potrzebuje przyk³adów i umykaj¹ mu subtelne wskazówki (GPT-4 jest radzi sobie z tym znacznie lepiej)
