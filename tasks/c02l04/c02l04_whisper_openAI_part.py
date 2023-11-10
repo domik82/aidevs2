@@ -35,13 +35,14 @@ def openAI_transcribe(audio_filepath, prompt: str) -> str:
     return transcript["text"]
 
 
+# this has worked but I can't get it to work on second laptop - seems that there is some lib conflict
 def create_transcription_using_local(mp3_file, log):
     log.info(f"mp3_file:{mp3_file}")
     try:
         if os.path.isfile(mp3_file) and mp3_file.endswith('.mp3'):
 
             # https://github.com/openai/whisper#available-models-and-languages
-            model = whisper.load_model("tiny") # best for testing pure code (not data extraction)
+            model = whisper.load_model("tiny")  # best for testing pure code (not data extraction)
             # model = whisper.load_model("base")
 
             # bare minimum to get relatively good translation -> small

@@ -1,20 +1,25 @@
 [tool.poetry]
-name = "ai-devs"
+name = "ai-devs2"
 version = "0.1.0"
 description = ""
-authors = ["Dominik Jeziorski d.jeziorski@gmail.com"]
+authors = ["Dominik Jeziorski <d.jeziorski@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
 requests = "^2.31.0"
-python-dotenv = "*"
-langchain = "*"
-openai = "*"
-openai-whisper = "*"
-tiktoken = "*"
-black = "*"
-icecream = "*"
+python-dotenv = "=1.0.0"
+icecream = "^2.1.3"
+langchain = "^0.0.330"
+openai = "=0.28.1"
+tiktoken = "=0.3.3"
+colored = "^2.2.3"
+termcolor = "^2.3.0"
+# there is a chance it won't work on windows
+# I managed to install whisper by running
+# pip install git+https://github.com/openai/whisper.git
+whisper = "^1.1.10"
+
 
 
 [build-system]

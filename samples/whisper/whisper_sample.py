@@ -9,6 +9,9 @@
 # to run create a .env file and fill it with API_KEY=your_api_key
 #  API_KEY = "put your api key here"
 
+# It might be required to run:
+# pip install git+https://github.com/openai/whisper.git
+
 import os
 import requests
 import json
@@ -18,7 +21,7 @@ from termcolor import colored
 #load env
 from dotenv import load_dotenv
 load_dotenv()
-API_KEY = os.getenv('API_KEY')
+API_KEY = os.getenv('OPENAI_API_KEY')
 
 def get_token_from_api():
     """Retrieve token from the API."""
