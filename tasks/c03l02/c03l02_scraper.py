@@ -1,4 +1,7 @@
 import os
+import time
+
+from icecream import ic
 
 from common.aidevs_taskhandler import TaskHandler
 from common.files_read_and_download import get_file_name, download_file, read_file_contents
@@ -33,12 +36,29 @@ def scraper_api_task():
         log.info(f'task_description: {task_description.response_json}')
 
         file = get_file_name(task_description.input)
-        if not os.path.exists(file):
-            download_file(task_description.input)
+        retry = 5
+        context = ""
 
-        context = read_file_contents(file)
+        for i in range(retry):
+            try:
+                download_file(task_description.input)
+                context = read_file_contents(file)
+                ic(context)
+                if "server error X_X" in context:
+                    ic("server error X_X")
+                    context = ""
+                    raise ValueError
+                else:
+                    break
+            except ValueError:
+                if i == retry - 1:
+                    raise
+
         question = task_description.question
-        task_answer = give_me_answer_based_on_context(user_template, question, system_template, context, log)
+        if context != "":
+            task_answer = give_me_answer_based_on_context(user_template, question, system_template, context, log)
+        else:
+            raise ValueError
         log.info(f'Task_answer: {task_answer}')
 
         answer_response = handler.post_answer(task_answer)
