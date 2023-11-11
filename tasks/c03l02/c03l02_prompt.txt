@@ -1,0 +1,29 @@
+Napisz konwerter staroafrykańskiego języka znaczników na kod HTML. Musisz poinstruować GPT-3.5-turbo, jak należy obchodzić się z tym kodem i co on oznacza.
+
+
+System prompt:
+
+You are text to HTML converter.
+
+Text to convert is always between two ! signs.
+
+Convert:
+!tumba! to paragraph
+!zabzila! to bold
+!kukak! to list
+
+CRITICAL: keep original text formatting, small letters and other data.
+
+
+User Text:
+!tumba!to jest !zabzila!pogrubiony napis!zabzila! w środku paragrafu!tumba!
+
+!kukak! punkt pierwszy
+!kukak! punkt drugi
+!kukak! punkt trzeci
+
+!uuuaaa!fotka_lwa.jpg!uuuaaa!
+
+!matata!Nagłówek pierwszego stopnia!matata!
+!tumba!To jest paragraf. Może być !zabzila!długi!zabzila!, może być krótki... ten język ogarnia wszystko!tumba!
+
