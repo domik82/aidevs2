@@ -1,13 +1,10 @@
 import os
-import re
-from urllib.parse import urlparse
-
-import requests
 from dotenv import load_dotenv, find_dotenv
 from icecream import ic
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 
+from common.constants import AI_DEVS_SERVER
 from common.files_read_and_download import get_file_name, download_file, read_file_contents
 from common.logger_setup import configure_logger
 
@@ -62,7 +59,7 @@ if __name__ == "__main__":
     log = configure_logger("scraper")
 
     try:
-        endpoint = 'https://zadania.aidevs.pl/text_pasta_history.txt'
+        endpoint = f'{AI_DEVS_SERVER}/text_pasta_history.txt'
         question = "komu przypisuje się przepis na danie lagana?"
         file = get_file_name(endpoint)
         if not os.path.exists(get_file_name(endpoint)):
@@ -71,7 +68,7 @@ if __name__ == "__main__":
         response = give_me_answer_based_on_context(user_template, question, system_template, context, log)
         ic(response)
 
-        endpoint = 'https://zadania.aidevs.pl/text_pizza_history.txt'
+        endpoint = f'{AI_DEVS_SERVER}/text_pizza_history.txt'
         question = "w którym roku według legendy została wynaleziona pizza Margherita?"
         file = get_file_name(endpoint)
         if not os.path.exists(file):

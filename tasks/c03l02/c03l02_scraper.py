@@ -15,10 +15,10 @@ from tasks.c03l02.c03l02_scraper_openAi_part import give_me_answer_based_on_cont
 # pracować na tym samym artykule.
 
 # 'msg': Return answer for the question in POLISH language, based on provided article. Maximum length for the answer is 200 characters
-# 'input': 'https://zadania.aidevs.pl/text_pasta_history.txt',
+# 'input': '{AI_DEVS_SERVER}/text_pasta_history.txt',
 # 'question': 'komu przypisuje się przepis na danie lagana?
 
-# 'input': https://zadania.aidevs.pl/text_pizza_history.txt
+# 'input': {AI_DEVS_SERVER}/text_pizza_history.txt
 # 'question': 'w którym roku według legendy została wynaleziona pizza Margherita?
 
 # server error X_X
