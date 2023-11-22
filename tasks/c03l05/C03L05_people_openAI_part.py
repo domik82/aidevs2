@@ -5,10 +5,8 @@ from icecream import ic
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 
-
 from common.files_read_and_download import get_file_name, download_file, read_file_contents
 from common.logger_setup import configure_logger
-
 
 # TIP: The context is provided between ``` characters. You might wonder why?
 # If markdown content would be passed then ### is fragment of markdown (### is used to create a heading level 3).
@@ -22,12 +20,12 @@ context: ```{context_value}``` """
 
 user_template = """{user_question} """
 
+
 def give_me_answer_based_on_context(usr_template=None,
                                     usr_question=None,
                                     sys_template=None,
                                     context_val=None,
                                     log=None):
-
     log.info(f"usr_question:{usr_question}")
     try:
 
@@ -52,7 +50,6 @@ def give_me_answer_based_on_context(usr_template=None,
 
 
 def get_data_dictionary(url):
-
     downloaded_file = get_file_name(url)
     if not os.path.exists(downloaded_file):
         download_file(url)
@@ -68,31 +65,20 @@ def get_data_dictionary(url):
 
     return result_dict
 
+
 if __name__ == "__main__":
     load_dotenv(find_dotenv())
     log = configure_logger("people")
     url = 'https://zadania.aidevs.pl/data/people.json'
     people_dict = get_data_dictionary(url)
     context = ""
-    # qdrant_host = 'localhost'
-    # qdrant_port = 6333
-    # qdrant_collection_name = 'unknow_news'
-    # ai_vector_size = 1536
-    #
-    # vector_db_obj = QdrantVectorStore(host=qdrant_host,
-    #                                   port=qdrant_port,
-    #                                   collection_name=qdrant_collection_name,
-    #                                   vector_size=ai_vector_size)
-
-    # load json db
 
     try:
         question = 'Gdzie mieszka Zofia Bzik?'
         system_template = read_file_contents('name_category_system_prompt.txt')
-        # ai_response = give_me_answer_based_on_context(user_template, question, system_template, context, log)
-        # if "I don't know" in ai_response:
-        #     raise ValueError
-        ai_response = 'Zofia Bzik; o_mnie'
+        ai_response = give_me_answer_based_on_context(user_template, question, system_template, context, log)
+        if "I don't know" in ai_response:
+            raise ValueError
         name, category = ai_response.strip().split(';')
         name = name.strip().upper()
         category = category.strip()
