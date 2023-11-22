@@ -1,0 +1,1 @@
+tablica 9 elementów od: ["merkury", "wenus",..]
