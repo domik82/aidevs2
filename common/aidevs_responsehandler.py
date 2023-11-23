@@ -14,6 +14,9 @@ class ResponseTaskHandler(ResponseBaseHandler):
         self.answer = self.response_json.get("answer", None)
         self.question = self.response_json.get("question", None)
         self.hint = self.response_json.get("hint", None)
+        self.url = self.response_json.get("url", None)
+        self.image = self.response_json.get("image", None)
+        self.text = self.response_json.get("text", None)
 
 
 class ResponseTokenHandler(ResponseBaseHandler):
